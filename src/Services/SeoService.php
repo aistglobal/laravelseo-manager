@@ -34,7 +34,7 @@ class SeoService implements SeoContact
         if (file_exists(public_path('/vendor/seo_manager/seo_manager.json'))) {
             $userInfo = json_decode(file_get_contents(public_path('/vendor/seo_manager/seo_manager.json')), true);
         }
-        if ($awsS3 === 0) {
+        if ($awsS3 === 0 && !preg_match('/no-image/',$image)) {
             $image = $baseUrlPath . $image;
         }
         SEO::setTitle($title);
